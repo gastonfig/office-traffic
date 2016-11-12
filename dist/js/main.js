@@ -20,8 +20,7 @@ require([
 	var trackPanel = new TrackPanel();
 
 	var isPlaying = false;
-	var isFastTempo = false;
-	
+	var isFastTempo = false;	
 	
 	trackPanel.addTimePanel();
 
@@ -30,7 +29,7 @@ require([
 	var stopButton = document.querySelector('.playback_stop');
 	var rewindButton = document.querySelector('.playback_rewind');
 
-	playButton.addEventListener('click', function (evt) {
+	playButton.addEventListener('mousedown', function (evt) {
 		evt.preventDefault();
 		playButton.classList.toggle('playing');
 
@@ -43,7 +42,7 @@ require([
 		isPlaying = !isPlaying;
 	});
 
-	stopButton.addEventListener('click', function (evt) {
+	stopButton.addEventListener('mousedown', function (evt) {
 		evt.preventDefault();
 		stopButton.classList.toggle('double');
 
@@ -56,7 +55,7 @@ require([
 		isFastTempo = !isFastTempo;
 	});
 
-	rewindButton.addEventListener('click', function (evt) {
+	rewindButton.addEventListener('mousedown', function (evt) {
 		evt.preventDefault();
 
 		playButton.classList.remove('playing');

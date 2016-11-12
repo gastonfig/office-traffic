@@ -554,6 +554,7 @@ header {
   .playback polygon, .playback path {
     fill: #fff; }
   .playback li {
+    cursor: pointer;
     border-top: 1px solid #fff;
     border-bottom: 1px solid #fff;
     border-left: 1px solid #fff;
