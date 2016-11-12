@@ -34,7 +34,7 @@ define([
 
 		var chorus = new Tone.Chorus(0.7, 2.5, 0.7).toMaster();
 
-		this._playedEmpty = false; // For iOS. Fixme: only do this on iOS devices
+		this._playedEmpty = false; // For iOS. TODO: only do this on iOS devices
 		this.iosInit = new Tone.Player({
 			'url' : '/assets/empty.wav'
 		}).toMaster(); 
@@ -101,7 +101,7 @@ define([
 	};
 
 	SoundPlayer.prototype.playSequence = function () {
-		if(!this._playedEmpty) { //Fixme: only do this on iOS devices
+		if(!this._playedEmpty) { //TODO: only do this on iOS devices
 			this._playedEmpty = true;
 			this.iosInit.start();
 		}
@@ -127,8 +127,8 @@ define([
 	SoundPlayer.prototype.resetTimer = function () {
 		this._timer = 0;
 
-		this._labels.resetHitsLabel(); // Fix me. This should be moved to its own method in the labels component.
-		this._labels.resetTimerLabel(); // Fix me. This should be moved to its own method in the labels component.
+		this._labels.resetHitsLabel(); // TODO: This should be moved to its own method in the labels component.
+		this._labels.resetTimerLabel(); // TODO: This should be moved to its own method in the labels component.
 	};
 
 	SoundPlayer.prototype.dataLoop = function (key) {

@@ -31,7 +31,7 @@ define([
 		// Screen With and Height
 		this._canvasWidth = window.innerWidth;
 		this._canvasHeight = window.innerHeight;
-		this._panelHeight = 80;//this._canvasHeight * 0.05;
+		this._panelHeight = 80; // TODO: Hardcoded for now
 		this._centerY = this._canvasHeight / 2;
 		this._centerX = this._canvasWidth / 2;
 	};	
@@ -80,7 +80,7 @@ define([
 	};
 
 	TrackPanel.prototype.resetPlayHead = function () {
-		// Hack, fix me: 5 pixels account for the tracker's width
+		// TODO: Hack, fix me: 5 pixels account for the tracker's width
 		this._playHead.style.width = 0 + '%'; 
 	};
 
@@ -114,7 +114,7 @@ define([
 		var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
 		var circleX = (event.minutes * this._canvasWidth / this.maxMinutes) +
 			this._panelDotRadius;
-		var circleY = 10; // Hardcoded for now
+		var circleY = 10; // TODO: Hardcoded for now
 
 		circle.setAttribute('r', this._panelDotRadius);
 		circle.setAttribute('fill', constants.colors[dataIndex]);

@@ -2,7 +2,6 @@ define(function () {
 	'use strict';
 
 	var Data = {
-
 		first: [
 			{ "name": "first", "time": "2015-10-16 08:32:59", "minutes": 0 },
 			{ "name": "first", "time": "2015-10-16 08:37:44", "minutes": 4 },
