@@ -61,7 +61,7 @@ require([
 		isPlaying = false;
 
 		soundPlayer.stopSequence();
-		soundPlayer.resetTimer();
 		trackPanel.resetPlayHead();
+		soundPlayer.resetTimer();
 	});
 });

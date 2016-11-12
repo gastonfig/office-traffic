@@ -25,7 +25,7 @@ define([
 		this._centerX = this._canvasWidth / 2;
 		this.dataKeys = Object.keys(data);
 		this.maxMinutes = this._getMaxMins();
-		
+
 		this._getMaxMins();
 	};
 
@@ -66,8 +66,8 @@ define([
 		this._playHead.style.width = left + '%';
 	};
 
-	TrackPanel.prototype.resetPlayHead = function () {   
-		this._playHead.style.with = 0; // Hack, fix me: 5 pixels account for the tracker's width
+	TrackPanel.prototype.resetPlayHead = function () {
+		this._playHead.style.width = 0 + '%'; // Hack, fix me: 5 pixels account for the tracker's width
 	};
 
 	TrackPanel.prototype._appendTimePanelGroup = function (index, key) {
