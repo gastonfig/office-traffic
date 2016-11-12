@@ -13,21 +13,28 @@ define([
 	var TrackPanel = function () {
 		this._panelSvg = document.getElementsByClassName('time-panel__svg')[0];
 		this._playHead = document.querySelector('.play-head');
-
-		this._panelDotRadius = 1.5;
+		this._panelDotRadius = 1;
 		this._data = data;
 
+		this.dataKeys = Object.keys(data);
+		this.maxMinutes = this._getMaxMins();
+
+		this._getMaxMins();
+		this._setCanvasProps();
+
+		window.addEventListener('resize', function() {
+			this.resetTimePanel();
+		}.bind(this));
+	};
+
+	TrackPanel.prototype._setCanvasProps = function () {
 		// Screen With and Height
 		this._canvasWidth = window.innerWidth;
 		this._canvasHeight = window.innerHeight;
 		this._panelHeight = 80;//this._canvasHeight * 0.05;
 		this._centerY = this._canvasHeight / 2;
 		this._centerX = this._canvasWidth / 2;
-		this.dataKeys = Object.keys(data);
-		this.maxMinutes = this._getMaxMins();
-
-		this._getMaxMins();
-	};
+	};	
 
 	TrackPanel.prototype._getMaxMins = function () {
 		var minutes = [];
@@ -44,6 +51,12 @@ define([
 		return Math.max.apply(null, minutes);
 	};
 
+	TrackPanel.prototype.resetTimePanel = function () {
+		this._setCanvasProps();
+		this._panelSvg.innerHTML = '';
+		this.addTimePanel();
+	};
+	
 	TrackPanel.prototype.addTimePanel = function () {
 		this._panelSvg.setAttribute('height', '100%');
 		this._panelSvg.setAttribute('width', '100%');
@@ -67,7 +80,8 @@ define([
 	};
 
 	TrackPanel.prototype.resetPlayHead = function () {
-		this._playHead.style.width = 0 + '%'; // Hack, fix me: 5 pixels account for the tracker's width
+		// Hack, fix me: 5 pixels account for the tracker's width
+		this._playHead.style.width = 0 + '%'; 
 	};
 
 	TrackPanel.prototype._appendTimePanelGroup = function (index, key) {
@@ -76,8 +90,9 @@ define([
 		var dataListSegment = this._data[key];
 
 		// groupElement
-			// .setAttribute('class', 'container');
-		groupElement.setAttribute('transform', 'translate(0, ' + ((index + this._panelDotRadius) * 14) + ')');
+		groupElement.setAttribute(
+			'transform', 'translate(0, ' + ((index + this._panelDotRadius) * 14) + ')'
+		);
 
 		// Appends group to Time Panel
 		this._panelSvg.appendChild(groupElement);
@@ -99,12 +114,12 @@ define([
 		var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
 		var circleX = (event.minutes * this._canvasWidth / this.maxMinutes) +
 			this._panelDotRadius;
-		// var circleY = (dataIndex * this._panelHeight * 0.3) + 10;
+		var circleY = 10; // Hardcoded for now
 
 		circle.setAttribute('r', this._panelDotRadius);
 		circle.setAttribute('fill', constants.colors[dataIndex]);
 		circle.setAttribute('cx', circleX);
-		circle.setAttribute('cy', 10);
+		circle.setAttribute('cy', circleY);
 
 		// Appends group to Time Panel
 		groupElement.appendChild(circle);
