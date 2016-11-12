@@ -1,0 +1,24 @@
+/* TYPOGRAPHY
+----------------------------------------------- */
+@mixin title-font {
+	font-family: "trumpgothicpro", sans-serif;
+	font-style: normal;
+}
+
+@mixin body-font {
+	font-family: georgia, serif;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// MIXINS
+@mixin type-size($sizeValue: 1, $lineHeight: $sizeValue, $relative: false) {
+	font-size: ($sizeValue / 16) + rem;
+
+	@if $relative == false {
+		line-height: ($lineHeight / 16) + rem;
+	} @else {
+		line-height: ($sizeValue / 16 * $lineHeight) + rem;
+	}
+}

@@ -1,52 +1,25 @@
 // VENDOR
 @import "vendor/_normalize";
 @import "modules/_layout";
+@import "modules/_colors";
+@import "modules/_typography";
+@import "modules/_about";
 
-/* COLORS
------------------------------------------------ */
-$white: #fff;
-$bg-color: #280459;
-$first-color: #6609E8;
-$second-color: #D509E8;
-$third-color: #09A2E8;
-
-/* TYPOGRAPHY
------------------------------------------------ */
-@import 'https://fonts.googleapis.com/css?family=Roboto+Mono:100,300,400|Roboto:100,300,400,700,900';
-
-@mixin title-font {
-	font-family: "trumpgothicpro", sans-serif;
-	font-style: normal;
-}
-
-@mixin body-font {
-	font-family: georgia, serif;
-	font-style: normal;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+html {
+	height: 100%;
 }
 
 body {
+	@include title-font;
 	background: $bg-color;
 	color: $white;
-	@include title-font;
 	font-weight: 300;
+	min-height: 100%;
+	position: relative; // Needed for the modal
 }
 
 .hidden-text {
 	display: none;
-}
-
-/* LAYOUT
------------------------------------------------ */
-@mixin type-size($sizeValue: 1, $lineHeight: $sizeValue, $relative: false) {
-	font-size: ($sizeValue / 16) + rem;
-
-	@if $relative == false {
-		line-height: ($lineHeight / 16) + rem;
-	} @else {
-		line-height: ($sizeValue / 16 * $lineHeight) + rem;
-	}
 }
 
 /* NAV
@@ -85,7 +58,10 @@ header {
 	margin: 0;
 	@include type-size(15, 1.45, true);
 	max-width: 33rem;
-
+	
+	a {
+		color: rgba($white, 0.6);		
+	}
 
 	@include at-medium() {
 		@include type-size(16, 1.45, true);
@@ -207,10 +183,11 @@ header {
 .time-panel {
 	left: 0;
 	margin-top: 2rem;
-	position: absolute;
+	position: relative;
 	width: 100%;
 	
 	@include at-small() {
+		position: absolute;
 		bottom: 0;
 		margin-top: 0;
 	}

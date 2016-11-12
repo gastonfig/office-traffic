@@ -18,15 +18,30 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
+  <div class="about modal-container">
+    <div class="container">
+      <header>
+        <a href="#" class="about__close modal-toggle">Close</a>
+      </header>
+      
+      <section class="about__main">
+        <h2>About This Project</h2>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non dui eget augue aliquet facilisis ac sit amet felis. Etiam lacinia sit amet metus non fermentum. Integer quis venenatis ligula, vitae euismod lacus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec maximus felis sit amet lacus posuere, at sodales velit lacinia. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse viverra nisi sed dictum ullamcorper. Praesent sodales ac arcu sed pulvinar. Integer pharetra mollis ex, eu facilisis eros fringilla a. Fusce in tellus tristique, viverra lectus ut, consequat massa. Aenean tempor ultricies ex, ut malesuada nisl tempus et. Aenean aliquet cursus nibh sed pulvinar.</p>
+
+        <p>Designed & Built by <a href="https://twitter.com/gastonfig" target="_blank">Gaston Figueroa</a></p>        
+      </section>
+    </div>
+  </div>
 
   <div class="container">
     <header>
       <h1 class="main-title">A Day’s Traffic <br/> at Uncorked</h1>
-      <p class="subtitle">What happens when you place three motion sensors at a product development shop for a day? This is the data visualization of a day of traffic at the Uncorked Studios office.</p>
+      <p class="subtitle">What happens when you place three motion sensors at a product development shop for a day? This is the data visualization of a day of traffic at the Uncorked Studios office. <a href="#" class="modal-toggle">More info here</a></p>
     </header>
 
     <nav>
-      <a href="#">About</a>
+      <a href="#" class="modal-toggle">About</a>
     </nav>
 
     <section class="section__main">
@@ -72,11 +87,10 @@
       </svg>
     </section>    
 
-    <div class="time-panel">
-      <div class="play-head"></div>
-      <svg class="time-panel__svg">
-      </svg>
-    </div>
+  </div>
+  <div class="time-panel">
+    <div class="play-head"></div>
+    <svg class="time-panel__svg"></svg>
   </div>
 
   <script data-main="js/main" src="js/require.js"></script>

@@ -64,4 +64,32 @@ require([
 		trackPanel.resetPlayHead();
 		soundPlayer.resetTimer();
 	});
+
+	var isModalOpen = false;
+	var modalContaner = document.querySelector('.modal-container');
+	var openModalBtn = document.querySelector('.modal-open');
+	var closeModalBtn = document.querySelector('.modal-close');
+	var toggleModalBtn = document.querySelectorAll('.modal-toggle');
+
+	function toggleModal(evt) {
+		evt.preventDefault();
+		
+		if(isModalOpen) {
+			TweenMax.to(
+				modalContaner, 0.3,
+				{opacity: 0, autoAlpha: 0, ease: Sine.easeInOut}
+			);
+		} else {
+			TweenMax.to(
+				modalContaner, 0.3,
+				{opacity: 1, autoAlpha: 1, ease: Sine.easeInOut}
+			);
+		}
+		isModalOpen = !isModalOpen;
+	}
+
+	for(var i = 0; i <  toggleModalBtn.length; i++ ) {
+		var modalBtn = toggleModalBtn[i];
+		modalBtn.addEventListener('mousedown', toggleModal, false);
+	}
 });

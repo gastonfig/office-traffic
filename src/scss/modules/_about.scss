@@ -1,0 +1,30 @@
+/* COLORS
+----------------------------------------------- */
+.about {
+	background: rgba($white, .95);
+	box-sizing: border-box;
+	border: .5rem solid $bg-color;
+	min-height: 100%;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	visibility: hidden;
+	width: 100%;
+	z-index: 1;
+	
+	h2 {
+		color: $bg-color;
+		@include type-size(50, 1.4, true);
+	}
+	p {
+		color: $bg-color;
+		@include body-font;
+		@include type-size(17, 1.4, true);
+		margin-bottom: (17*1.4/16)+rem;
+	}
+}
+
+.about__main {
+	max-width: 35rem;
+}
