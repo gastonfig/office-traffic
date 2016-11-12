@@ -1,12 +1,48 @@
-/* COLORS
+/* ABOUT
 ----------------------------------------------- */
+nav {
+	position: absolute;
+	right: 1.5rem;
+	top: 1.5rem;
+	z-index: 9;
+}
+
+.menu-btn {
+	svg {
+    height: 24px;
+    width: 24px;
+	}
+
+	path {
+		fill: $white;
+
+		&.close {
+			opacity: 0;
+		}
+	}
+
+	&.is-open {
+		path {
+			fill: $first-color;
+
+			&.open {
+				opacity: 0;
+			}
+
+			&.close {
+				opacity: 1;
+			}
+		}
+	}
+}
 .about {
 	background: rgba($white, .95);
 	box-sizing: border-box;
-	border: .5rem solid $bg-color;
+	border: .5rem solid $first-color;
 	min-height: 100%;
 	left: 0;
 	opacity: 0;
+	padding: 0 5%;
 	position: absolute;
 	top: 0;
 	visibility: hidden;
@@ -17,11 +53,16 @@
 		color: $bg-color;
 		@include type-size(50, 1.4, true);
 	}
+
 	p {
 		color: $bg-color;
 		@include body-font;
 		@include type-size(17, 1.4, true);
 		margin-bottom: (17*1.4/16)+rem;
+	}
+
+	a {
+		color: $first-color;
 	}
 }
 

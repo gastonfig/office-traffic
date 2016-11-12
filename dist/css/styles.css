@@ -392,15 +392,38 @@ th {
 ----------------------------------------------- */
 /* TYPOGRAPHY
 ----------------------------------------------- */
-/* COLORS
+/* ABOUT
 ----------------------------------------------- */
+nav {
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  z-index: 9; }
+
+.menu-btn svg {
+  height: 24px;
+  width: 24px; }
+
+.menu-btn path {
+  fill: #fff; }
+  .menu-btn path.close {
+    opacity: 0; }
+
+.menu-btn.is-open path {
+  fill: #6609E8; }
+  .menu-btn.is-open path.open {
+    opacity: 0; }
+  .menu-btn.is-open path.close {
+    opacity: 1; }
+
 .about {
   background: rgba(255, 255, 255, 0.95);
   box-sizing: border-box;
-  border: 0.5rem solid #280459;
+  border: 0.5rem solid #6609E8;
   min-height: 100%;
   left: 0;
   opacity: 0;
+  padding: 0 5%;
   position: absolute;
   top: 0;
   visibility: hidden;
@@ -419,6 +442,8 @@ th {
     font-size: 1.0625rem;
     line-height: 1.4875rem;
     margin-bottom: 1.4875rem; }
+  .about a {
+    color: #6609E8; }
 
 .about__main {
   max-width: 35rem; }
