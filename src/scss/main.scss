@@ -1,0 +1,274 @@
+// VENDOR
+@import "vendor/_normalize";
+@import "modules/_layout";
+
+/* COLORS
+----------------------------------------------- */
+$white: #fff;
+$bg-color: #280459;
+$first-color: #6609E8;
+$second-color: #D509E8;
+$third-color: #09A2E8;
+
+/* TYPOGRAPHY
+----------------------------------------------- */
+@import 'https://fonts.googleapis.com/css?family=Roboto+Mono:100,300,400|Roboto:100,300,400,700,900';
+
+@mixin title-font {
+	font-family: "trumpgothicpro", sans-serif;
+	font-style: normal;
+}
+
+@mixin body-font {
+	font-family: georgia, serif;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	background: $bg-color;
+	color: $white;
+	@include title-font;
+	font-weight: 300;
+}
+
+.hidden-text {
+	display: none;
+}
+
+/* LAYOUT
+----------------------------------------------- */
+@mixin type-size($sizeValue: 1, $lineHeight: $sizeValue, $relative: false) {
+	font-size: ($sizeValue / 16) + rem;
+
+	@if $relative == false {
+		line-height: ($lineHeight / 16) + rem;
+	} @else {
+		line-height: ($sizeValue / 16 * $lineHeight) + rem;
+	}
+}
+
+/* NAV
+----------------------------------------------- */
+
+
+/* HEADER
+----------------------------------------------- */
+header {
+	margin-bottom: 2rem;
+	width: 100%;
+	float: left;
+}
+
+.main-title {  
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	margin: 2rem 0 1.5rem 0;
+	text-transform: uppercase;
+	@include type-size(45, 1.1, true);
+
+	@include at-medium() {
+		// margin-bottom: 1rem;
+		margin-top: 4rem;
+		@include type-size(70, .95, true);
+	}
+
+	@include at-large() {
+		@include type-size(90, .95, true);
+	}
+}
+
+.subtitle {
+	@include body-font;
+	color: rgba($white, 0.6);
+	margin: 0;
+	@include type-size(15, 1.45, true);
+	max-width: 33rem;
+
+
+	@include at-medium() {
+		@include type-size(16, 1.45, true);
+	}
+}
+
+/* MAP
+----------------------------------------------- */
+.main__map {
+	fill: none;
+	float: left;
+	// margin-right: 8%;
+	max-width: 90%;
+	stroke: rgba($white, 0.3);
+	stroke-width: 1px;
+
+	
+	@include at-small() {
+		max-width: 80%;
+	}
+
+	@include at-large() {
+		margin-left: 20%;
+		max-width: 60%;    
+	}
+
+	// @include at-large-height() {
+	//   max-height: 10%;
+	// }
+}
+
+.map_rings {
+	stroke: none;
+	fill: $first-color;
+}
+
+.map__g {
+	fill: $second-color;
+}
+
+.map__m {
+	fill: $third-color;
+}
+
+.map_dots {
+	stroke: #7545E6;
+}
+
+/* STATS
+----------------------------------------------- */
+.section__main_stats {
+	float: right;
+	width: 100%;
+
+	@include at-medium() {
+		width: 7.23rem;
+	}
+}
+
+.stat {
+	float: left;
+	margin-right: 1rem;
+
+	@include at-medium() {
+		border-bottom: 1px solid rgba($white, 0.15);
+		padding: 1rem 0;
+		width: 100%;
+	}
+}
+
+.stats_heading {
+	color: rgba($white, .4);
+	letter-spacing: 0.12em;
+	margin: 0 0 .2rem;
+
+	@include type-size(13, 1, true);
+	text-transform: uppercase;
+
+	@include at-medium() {
+		font-weight: 300;
+		@include type-size(15, 1, true);
+	}
+}
+
+.stats_value {
+	font-weight: 100;
+	letter-spacing: 0.02em;
+	margin: 0;
+	@include type-size(34, 1, true);
+
+	@include at-medium() {
+		@include type-size(37, 1, true);
+	}
+
+	span {
+		letter-spacing: 0.01em;
+		margin-left: .1rem; 
+		@include type-size(21, 1.45, true);
+		opacity: 0.4;
+
+		@include at-medium() {
+			margin-left: .2rem; 
+			@include type-size(25, 1.45, true);
+		}
+	}
+}
+
+// Time Panel
+.time-panel {
+	left: 0;
+	margin-top: 2rem;
+	position: absolute;
+	width: 100%;
+	// z-index: 3;
+	
+	@include at-small() {
+		bottom: 0;
+		margin-top: 0;
+	}
+}
+
+/* PLABACK BUTTONS
+----------------------------------------------- */
+.playback {
+	float: left;
+	display: inline-block;
+	list-style: none;
+	margin: 0 2rem 3rem 0;
+	padding: 0;
+
+	@include at-medium() {
+		margin: 0;
+	}
+
+	svg {
+		display: block;
+	}
+
+	polygon, path {
+		fill: $white;
+	}
+
+	li {
+		border-top: 1px solid $white;
+		border-bottom: 1px solid $white;
+		border-left: 1px solid $white;
+		float: left;
+		padding: 1rem;
+		position: relative;
+
+		@include at-medium() {
+			padding: .6rem;
+		}
+
+		&:last-child {
+			border-right: 1px solid $white;
+		}
+		
+		&.playing {
+			.stop {
+				display: block;      
+				opacity: 1;
+			}
+
+			.play {
+				display: block;      
+				opacity: 0;
+			}
+		}
+	}
+
+	.stop {
+		opacity: 0;
+		position: absolute;
+		top: 50%;
+    transform: translateY(-50%);
+	}
+
+	.double {
+		background: $white;
+
+		path {
+			fill: $bg-color;
+		}
+	}
+}

@@ -1,0 +1,74 @@
+/* LAYOUT
+----------------------------------------------- */
+$large-screen: 1000;
+$medium-screen: 800;
+$small-screen: 600;
+
+.container {
+  // background: #ddd;
+  margin: 0 auto;
+  max-width: ($large-screen/16) + em;
+  padding: 0 3%;
+  // height: 100%;
+
+  &:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+}
+
+.play-head {
+  background: #3A008C;
+  height: 100%;
+  left: 0;
+  opacity: 0.7;
+  position: absolute;
+  z-index: -1;
+
+  &:after {
+    background: #BA19FF;
+    content: '';
+    height: 3px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.section__main {
+  // background: #ddd;
+  display: inline-block;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+// MEDIA QUERIES
+
+
+@mixin at-large() {
+  @media (min-width: $large-screen + px) {
+    @content;
+  }
+}
+
+@mixin at-medium() {
+  @media (min-width: $medium-screen + px) {
+    @content;
+  }
+}
+
+@mixin at-small() {
+  @media (min-width: $small-screen + px) {
+    @content;
+  }
+}
+
+$large-screen-height: 900;
+
+@mixin at-large-height() {
+  @media (max-height: $large-screen-height + px) {
+    @content;
+  }
+}

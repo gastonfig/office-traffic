@@ -1,0 +1,24 @@
+{
+  "name": "sounds",
+  "private": true,
+  "version": "0.0.1",
+  "description": "",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.13.0",
+    "browserify": "^13.0.1",
+    "gsap": "^1.18.5",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.11",
+    "gulp-concat": "^2.6.0",
+    "gulp-requirejs-optimize": "^1.2.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^1.5.4",
+    "gulp-util": "^3.0.7",
+    "moment": "^2.14.1",
+    "node-sass": "^3.8.0",
+    "requirejs": "^2.3.2",
+    "tone": "^0.6.1",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
