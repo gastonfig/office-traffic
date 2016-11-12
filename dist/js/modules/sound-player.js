@@ -13,10 +13,9 @@ define([
 		Tone,
 		data,
 		constants,
-		labels,
+		Labels,
 		DotsAnimation,
 		TrackPanel
-
 	) {
 	'use strict';
 
@@ -27,20 +26,15 @@ define([
 		this._data = data;
 		this._timer = 0;
 		this._constants = constants;
-		this.maxMinutes = Math.max(
-			this._data.moe[this._data.moe.length - 1].minutes, 
-			this._data.gaston[this._data.gaston.length - 1].minutes, 
-			this._data.john[this._data.john.length - 1].minutes
-		);
-
-		this._labels = new labels();
+		this._labels = new Labels();
 		this._DotsAnimation = new DotsAnimation();
 		this._TrackPanel = new TrackPanel();
-
+		this._dataKeys = this._TrackPanel.dataKeys;
+		this.maxMinutes = this._TrackPanel.maxMinutes;
 
 		var chorus = new Tone.Chorus(0.7, 2.5, 0.7).toMaster();
 
-		this._playedEmpty = false; // For iOS
+		this._playedEmpty = false; // For iOS. Fixme: only do this on iOS devices
 		this.iosInit = new Tone.Player({
 			'url' : '/assets/empty.wav'
 		}).toMaster(); 
@@ -53,23 +47,20 @@ define([
 		};
 
 		this._synths = {
-			gaston : new Tone.SimpleSynth({
+			first : new Tone.SimpleSynth({
 				volume : 1,
 				envelope : this._synthEnvelope
-			})
-				.connect(chorus),
+			}).connect(chorus),
 
-			john : new Tone.SimpleSynth({
+			second : new Tone.SimpleSynth({
 				volume : -2,
 				envelope : this._synthEnvelope
-			})
-				.connect(chorus),
+			}).connect(chorus),
 
-			moe : new Tone.SimpleSynth({
+			third : new Tone.SimpleSynth({
 				volume : -2,
 				envelope : this._synthEnvelope
-			})
-				.connect(chorus)
+			}).connect(chorus)
 		};
 
 		this.init();
@@ -97,9 +88,10 @@ define([
 
 		Tone.Transport.scheduleRepeat(function() {
 			if(shouldContinue()) {
-				dataLoop(this._data.john, 'j');
-				dataLoop(this._data.gaston, 'g');
-				dataLoop(this._data.moe, 'm');
+
+				for(var i = 0; i < this._dataKeys.length; i++) {
+					dataLoop(this._dataKeys[i]);
+				}
 
 				this._TrackPanel.movePlayHead(this._timer);
 				this._labels.updateTime(this._timer);
@@ -109,7 +101,7 @@ define([
 	};
 
 	SoundPlayer.prototype.playSequence = function () {
-		if(!this._playedEmpty) {
+		if(!this._playedEmpty) { //Fixme: only do this on iOS devices
 			this._playedEmpty = true;
 			this.iosInit.start();
 		}
@@ -139,10 +131,11 @@ define([
 		this._labels.resetTimerLabel(); // Fix me. This should be moved to its own method in the labels component.
 	};
 
-	SoundPlayer.prototype.dataLoop = function (dataItem, initial) {
+	SoundPlayer.prototype.dataLoop = function (key) {
 		var note;
 		var synthName;
 		var releaseTime = 4;
+		var dataItem = this._data[key];
 
 		for (var item in dataItem) {
 			if(this._timer === dataItem[item].minutes) {
@@ -152,7 +145,7 @@ define([
 				this._synths[synthName].triggerAttackRelease(
 					this._constants.scale[note], releaseTime + 'n'
 				);
-				this._DotsAnimation.animateDots('.map__' + initial, '.dot__' + initial);
+				this._DotsAnimation.animateDots(key);
 
 				this._labels.updateHitsLabel();
 			}

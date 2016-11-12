@@ -32,7 +32,7 @@ define(['moment'], function (moment) {
 	};
 
 	// Updates the number of hits label
-	Labels.prototype.resetTimerLabel = function () {    
+	Labels.prototype.resetTimerLabel = function () {
 		this.updateTime(0);
 	};
 

@@ -111,27 +111,37 @@ header {
 		margin-left: 20%;
 		max-width: 60%;    
 	}
-
-	// @include at-large-height() {
-	//   max-height: 10%;
-	// }
 }
 
 .map_rings {
 	stroke: none;
+}
+
+.ring__first {
 	fill: $first-color;
 }
 
-.map__g {
+.ring__second {
 	fill: $second-color;
 }
 
-.map__m {
+.ring__third {
 	fill: $third-color;
 }
 
-.map_dots {
-	stroke: #7545E6;
+.dot__first {
+	fill: rgba($first-color, .3);
+	stroke: $first-color;
+}
+
+.dot__second {
+	fill: rgba($second-color, .3);
+	stroke: $second-color;
+}
+
+.dot__third {
+	fill: rgba($third-color, .3);
+	stroke: $third-color;
 }
 
 /* STATS

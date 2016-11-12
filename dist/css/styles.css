@@ -463,17 +463,28 @@ header {
       max-width: 60%; } }
 
 .map_rings {
-  stroke: none;
+  stroke: none; }
+
+.ring__first {
   fill: #6609E8; }
 
-.map__g {
+.ring__second {
   fill: #D509E8; }
 
-.map__m {
+.ring__third {
   fill: #09A2E8; }
 
-.map_dots {
-  stroke: #7545E6; }
+.dot__first {
+  fill: rgba(102, 9, 232, 0.3);
+  stroke: #6609E8; }
+
+.dot__second {
+  fill: rgba(213, 9, 232, 0.3);
+  stroke: #D509E8; }
+
+.dot__third {
+  fill: rgba(9, 162, 232, 0.3);
+  stroke: #09A2E8; }
 
 /* STATS
 ----------------------------------------------- */

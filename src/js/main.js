@@ -18,9 +18,8 @@ require([
 
 	var soundPlayer = new SoundPlayer();
 	var trackPanel = new TrackPanel();
-
 	var isPlaying = false;
-	var isFastTempo = false;	
+	var isFastTempo = false;
 	
 	trackPanel.addTimePanel();
 

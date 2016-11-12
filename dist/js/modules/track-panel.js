@@ -23,12 +23,25 @@ define([
 		this._panelHeight = 80;//this._canvasHeight * 0.05;
 		this._centerY = this._canvasHeight / 2;
 		this._centerX = this._canvasWidth / 2;
+		this.dataKeys = Object.keys(data);
+		this.maxMinutes = this._getMaxMins();
+		
+		this._getMaxMins();
+	};
 
-		this._maxMinutes = Math.max(
-			this._data.moe[this._data.moe.length - 1].minutes, 
-			this._data.gaston[this._data.gaston.length - 1].minutes, 
-			this._data.john[this._data.john.length - 1].minutes
-		);
+	TrackPanel.prototype._getMaxMins = function () {
+		var minutes = [];
+
+		for(var i = 0; i < this.dataKeys.length; i++) {
+			var key = this.dataKeys[i];
+			var obj = this._data[key];
+
+			minutes.push(
+				obj[obj.length - 1].minutes
+			);
+		}
+
+		return Math.max.apply(null, minutes);
 	};
 
 	TrackPanel.prototype.addTimePanel = function () {
@@ -49,7 +62,7 @@ define([
 	};
 	
 	TrackPanel.prototype.movePlayHead = function (timer) {
-		var left = timer/this._maxMinutes * 100;
+		var left = timer/this.maxMinutes * 100;
 		this._playHead.style.width = left + '%';
 	};
 
@@ -84,7 +97,7 @@ define([
 	) {
 		// Creates the circle
 		var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-		var circleX = (event.minutes * this._canvasWidth / this._maxMinutes) +
+		var circleX = (event.minutes * this._canvasWidth / this.maxMinutes) +
 			this._panelDotRadius;
 		// var circleY = (dataIndex * this._panelHeight * 0.3) + 10;
 
