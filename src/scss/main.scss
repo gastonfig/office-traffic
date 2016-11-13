@@ -216,22 +216,37 @@ header {
 
 	li {
 		cursor: pointer;
-		border-top: 1px solid $white;
-		border-bottom: 1px solid $white;
-		border-left: 1px solid $white;
+		border: 1px solid $white;
+		// border-top: 1px solid $white;
+		// border-bottom: 1px solid $white;
+		// border-left: 1px solid $white;
+		margin-right: -1px;
 		float: left;
 		padding: 1rem;
 		position: relative;
+		@include pressed-animation-tansition();
 
 		@include at-medium() {
-			padding: .6rem;
+			padding: 0.6rem;
+		}
+
+		&:active {
+			background: rgba($white, 0.3);
+			@include pressed-animation-scale();
 		}
 
 		&:last-child {
-			border-right: 1px solid $white;
+			// border-right: 1px solid $white;
+			margin-right: 0;
 		}
 		
 		&.playing {
+			background: $white;
+
+			path {
+				fill: $bg-color;
+			}
+
 			.stop {
 				display: block;
 				opacity: 1;

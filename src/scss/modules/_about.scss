@@ -8,9 +8,15 @@ nav {
 }
 
 .menu-btn {
+
 	svg {
     height: 24px;
     width: 24px;
+		@include pressed-animation-tansition();
+
+		&:active {
+	    @include pressed-animation-scale();
+		}
 	}
 
 	path {

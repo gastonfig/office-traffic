@@ -402,7 +402,10 @@ nav {
 
 .menu-btn svg {
   height: 24px;
-  width: 24px; }
+  width: 24px;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  .menu-btn svg:active {
+    transform: scale(0.85); }
 
 .menu-btn path {
   fill: #fff; }
@@ -650,23 +653,30 @@ header {
     fill: #fff; }
   .playback li {
     cursor: pointer;
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    border-left: 1px solid #fff;
+    border: 1px solid #fff;
+    margin-right: -1px;
     float: left;
     padding: 1rem;
-    position: relative; }
+    position: relative;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     @media (min-width: 800px) {
       .playback li {
-        padding: .6rem; } }
+        padding: 0.6rem; } }
+    .playback li:active {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(0.85); }
     .playback li:last-child {
-      border-right: 1px solid #fff; }
-    .playback li.playing .stop {
-      display: block;
-      opacity: 1; }
-    .playback li.playing .play {
-      display: block;
-      opacity: 0; }
+      margin-right: 0; }
+    .playback li.playing {
+      background: #fff; }
+      .playback li.playing path {
+        fill: #280459; }
+      .playback li.playing .stop {
+        display: block;
+        opacity: 1; }
+      .playback li.playing .play {
+        display: block;
+        opacity: 0; }
   .playback .stop {
     opacity: 0;
     position: absolute;
