@@ -31,6 +31,7 @@ define([
 		this._TrackPanel = new TrackPanel();
 		this._dataKeys = this._TrackPanel.dataKeys;
 		this.maxMinutes = this._TrackPanel.maxMinutes;
+		this._prev = {};
 
 		var chorus = new Tone.Chorus(0.7, 2.5, 0.7).toMaster();
 
@@ -127,8 +128,8 @@ define([
 	SoundPlayer.prototype.resetTimer = function () {
 		this._timer = 0;
 
-		this._labels.resetHitsLabel(); // TODO: This should be moved to its own method in the labels component.
-		this._labels.resetTimerLabel(); // TODO: This should be moved to its own method in the labels component.
+		this._labels.resetHitsLabel(); // TODO: Move to its own method in labels component.
+		this._labels.resetTimerLabel(); // TODO: Move to its own method in labels component.
 	};
 
 	SoundPlayer.prototype.dataLoop = function (key) {
@@ -140,12 +141,19 @@ define([
 		for (var item in dataItem) {
 			if(this._timer === dataItem[item].minutes) {
 				synthName = dataItem[item].name;
+				
+				// Prevents the same note being played and animated more
+				// than once for the same location at the same minute
+				if(this._prev[synthName] !== dataItem[item].minutes) {
+					note = Math.floor(Math.random() * this._constants.scale.length);
+					this._synths[synthName].triggerAttackRelease(
+						this._constants.scale[note], releaseTime + 'n'
+					);
 
-				note = Math.floor(Math.random() * this._constants.scale.length);
-				this._synths[synthName].triggerAttackRelease(
-					this._constants.scale[note], releaseTime + 'n'
-				);
-				this._DotsAnimation.animateDots(key);
+					this._DotsAnimation.animateDots(key);
+					this._prev[synthName] = this._timer;
+				}
+
 
 				this._labels.updateHitsLabel();
 			}
