@@ -44,7 +44,7 @@ define([
 			attack: 0.016,
 			decay: 1,
 			sustain: 0.1,
-			release: 0
+			release: 1
 		};
 
 		this._synths = {

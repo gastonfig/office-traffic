@@ -21,7 +21,7 @@ define([
 	Modal.prototype._addToggleListener = function () {
 		for(var i = 0; i <  this._toggleModalBtn.length; i++ ) {			
 			var modalBtn = this._toggleModalBtn[i];
-			modalBtn.addEventListener('mousedown', this.toggleModal.bind(this), false);
+			modalBtn.addEventListener('click', this.toggleModal.bind(this), false);
 		}
 	};
 
@@ -31,12 +31,12 @@ define([
 		if(this._isModalOpen) {
 			this._TweenMax.to(
 				this._modalContainer, 0.3,
-				{opacity: 0, autoAlpha: 0, ease: Sine.easeInOut}
+				{opacity: 0, autoAlpha: 0}
 			);
 		} else {
 			this._TweenMax.to(
 				this._modalContainer, 0.3,
-				{opacity: 1, autoAlpha: 1, ease: Sine.easeInOut}
+				{opacity: 1, autoAlpha: 1}
 			);
 		}
 
