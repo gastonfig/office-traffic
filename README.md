@@ -3,16 +3,16 @@ What happens when you install three motion sensors in your office and use that d
 
 [gastonfig.com/office-traffic](http://gastonfig.com/office-traffic/)
 
-<img src="screenshot/.png" width="500" alt="Project screenshot.">
+<img src="https://raw.githubusercontent.com/gastonfig/office-traffic/master/screenshot.png" alt="Project screenshot.">
 
 ## Running locally
 - Clone this repository
-- Install dependencies
-```javascript
-`npm install`
+- Install dependencies:
+```
+npm install
 ```
 
 - Run local server:
-```javascript
-`gulp`
+```
+gulp
 ```
