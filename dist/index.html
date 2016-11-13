@@ -18,22 +18,10 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-  <div class="about modal-container">
-    <div class="container">     
-      <section class="about__main">
-        <h2>About This Project</h2>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non dui eget augue aliquet facilisis ac sit amet felis. Etiam lacinia sit amet metus non fermentum. Integer quis venenatis ligula, vitae euismod lacus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec maximus felis sit amet lacus posuere, at sodales velit lacinia. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse viverra nisi sed dictum ullamcorper. Praesent sodales ac arcu sed pulvinar. Integer pharetra mollis ex, eu facilisis eros fringilla a. Fusce in tellus tristique, viverra lectus ut, consequat massa. Aenean tempor ultricies ex, ut malesuada nisl tempus et. Aenean aliquet cursus nibh sed pulvinar.</p>
-
-        <p>Designed & Built by <a href="https://twitter.com/gastonfig" target="_blank">Gaston Figueroa</a></p>        
-      </section>
-    </div>
-  </div>
-
   <div class="container">
     <header>
-      <h1 class="main-title">A Day’s Traffic <br/> at Uncorked</h1>
-      <p class="subtitle">What happens when you place three motion sensors at a product development shop for a day? This is the data visualization of a day of traffic at the Uncorked Studios office. <a href="#" class="modal-toggle">More info here</a></p>
+      <h1 class="main-title">A Day’s Traffic <br/> at the Office</h1>
+      <p class="subtitle">What happens when you install three motion sensors in your office and use that data to create music? This is the data and sound visualization of a day of traffic at the <a href="http://www.uncorkedstudios.com/" target="_blank">Uncorked Studios</a> office. <a href="#" class="modal-toggle">Read the nerdy details here.</a></p>
     </header>
 
     <nav>
@@ -73,8 +61,7 @@
         </div>
       </div>
       
-      <svg class="main__map" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-      viewBox="0 0 366 256.6" xml:space="preserve">
+      <svg class="main__map" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 366 256.6">
         <defs>
           <pattern id="stripes" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(-40)">
             <rect x="0" y="0" width="1" height="4" style="stroke:none; fill:#482971;"></rect>
@@ -97,6 +84,32 @@
   <div class="time-panel">
     <div class="play-head"></div>
     <svg class="time-panel__svg"></svg>
+  </div>
+
+  <div class="about modal-container">
+    <div class="container">     
+      <section class="about__main">
+        <h2>About This Project</h2>
+
+        <div class="col">
+          <p>In 2015, I found myself with some free time to work on a personal project. I decided to use that opportunity to experiment with sound visualziation while learning more about Raspberry Pis and motion tracking.</p>
+          <p>I used the Raspberries to capture the foot traffic in three locations of the Uncorked Studios office where I was working at the time. For each location I hang a Raspberry Pi hooked to a PIR motion sensor to record every time a person walked under them. Because PIRs have a wide detection radius (they don't just track what's directly underneath them but also a few feet around) I improvised a filter made of cartboard and masking tape to only track movement direclty below them.</p>
+          <p>After getting a full day's worth of data, I visualized it against a map of the office. I also used the data to create music by playing a random note within the Dorian scale for each time a person walked by. I used the amazing <a href="https://github.com/Tonejs/Tone.js" target="_blank">Tonejs</a> library to play sounds in the browser.</p>
+        </div>
+
+        <div class="sidebar">
+          <img src="/assets/rpi-01.jpg" alt="One of Raspberry Pis used for this project">
+          <img src="/assets/data.jpg" alt="One of Raspberry Pis used for this project">          
+        </div>
+
+        <footer>
+          <ul>
+            <li>Check out this project on <a href="">Github</a></li>
+            <li>Designed &amp; Built by <a href="https://twitter.com/gastonfig" target="_blank">Gaston Figueroa</a></li>
+          </ul>       
+        </footer>
+      </section>
+    </div>
   </div>
 
   <script data-main="js/main" src="js/require.js"></script>

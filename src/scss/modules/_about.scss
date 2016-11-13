@@ -35,14 +35,20 @@ nav {
 		}
 	}
 }
+
+.about__main {
+	margin: 0 auto;
+	max-width: 55rem;
+}
+
 .about {
-	background: rgba($white, .95);
+	background: rgba($white, 0.99);
 	box-sizing: border-box;
 	border: .5rem solid $first-color;
-	min-height: 100%;
 	left: 0;
+	min-height: 100%;
 	opacity: 0;
-	padding: 0 5%;
+	padding: 2rem 5%;
 	position: absolute;
 	top: 0;
 	visibility: hidden;
@@ -51,21 +57,55 @@ nav {
 	
 	h2 {
 		color: $bg-color;
-		@include type-size(50, 1.4, true);
+		@include type-size(52, 1.4, true);
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	p, li {
+		color: $bg-color;
+		@include body-font;
+		@include type-size(16, 1.45, true);
+		margin-top: 0;
 	}
 
 	p {
-		color: $bg-color;
-		@include body-font;
-		@include type-size(17, 1.4, true);
-		margin-bottom: (17*1.4/16)+rem;
+		margin-bottom: (16*1.45/16)+rem;
 	}
 
 	a {
 		color: $first-color;
 	}
-}
 
-.about__main {
-	max-width: 35rem;
+	.col {
+		float: left;
+		width: 100%;
+		@include at-medium() {
+			margin-left: 10%;
+			width: 45%;
+		}
+	}
+
+	.sidebar {
+		float: right;
+		width: 100%;
+		@include at-medium() {
+			width: 38%;
+		}
+
+		img {
+			margin-bottom: 1rem;
+			width: 100%;
+		}
+	}
+
+	footer {
+    display: inline-block;
+    margin-top: 2rem;
+		width: 100%;
+	}
 }
