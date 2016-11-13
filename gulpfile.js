@@ -11,7 +11,7 @@ var cleanCSS = require('gulp-clean-css');
 var uglify = require('gulp-uglify');
 var requirejsOptimize = require('gulp-requirejs-optimize');
 
-var DIST_DIR = 'dist/';
+var DIST_DIR = 'docs/';
 var SRC_DIR = 'src/';
 
 // BrowserSync Static Server
@@ -76,7 +76,7 @@ gulp.task('build-scripts', function () {
   .pipe(requirejsOptimize({
     baseUrl: 'src/js',
   }))
-  .pipe(gulp.dest('dist/js'));
+  .pipe(gulp.dest(DIST_DIR + 'js'));
 });
 
 /**

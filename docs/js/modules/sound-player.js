@@ -36,7 +36,7 @@ define([
 
 		this._playedEmpty = false; // For iOS. TODO: only do this on iOS devices
 		this.iosInit = new Tone.Player({
-			'url' : '/assets/empty.wav'
+			'url' : 'assets/empty.wav'
 		}).toMaster(); 
 
 		this._synthEnvelope = {
