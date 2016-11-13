@@ -33,7 +33,7 @@ define([
 		this.maxMinutes = this._TrackPanel.maxMinutes;
 		this._prev = {};
 
-		var chorus = new Tone.Chorus(0.7, 2.5, 0.7).toMaster();
+		var chorus = new Tone.Chorus(0.5, 1.5, 0.5).toMaster();
 
 		this._playedEmpty = false; // For iOS. TODO: only do this on iOS devices
 		this.iosInit = new Tone.Player({
@@ -41,25 +41,25 @@ define([
 		}).toMaster(); 
 
 		this._synthEnvelope = {
-			attack: 0.006,
-			decay: 0.6,
-			sustain: 0.2,
-			release: 1
+			attack: 0.016,
+			decay: 1,
+			sustain: 0.1,
+			release: 0
 		};
 
 		this._synths = {
 			first : new Tone.SimpleSynth({
-				volume : 1,
+				volume : -7,
 				envelope : this._synthEnvelope
 			}).connect(chorus),
 
 			second : new Tone.SimpleSynth({
-				volume : -2,
+				volume : -7,
 				envelope : this._synthEnvelope
 			}).connect(chorus),
 
 			third : new Tone.SimpleSynth({
-				volume : -2,
+				volume : -7,
 				envelope : this._synthEnvelope
 			}).connect(chorus)
 		};
